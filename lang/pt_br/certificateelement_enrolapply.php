@@ -24,7 +24,9 @@
 
 $string['knownshortnames'] = 'Nomes breves em uso neste site: {$a}';
 $string['pluginname'] = 'Resposta da solicitação de inscrição';
-$string['privacy:metadata'] = 'O elemento de resposta da solicitação de inscrição não guarda dados próprios. As respostas que ele imprime ficam com a emissão do certificado, em uma tabela da ferramenta de certificados, e são excluídas com ela.';
+$string['privacy:metadata:issues'] = 'A tabela de certificados emitidos da ferramenta de certificados, em cujos dados o elemento de resposta da solicitação de inscrição guarda uma cópia das respostas que o certificado imprime.';
+$string['privacy:metadata:issues:data'] = 'As respostas às perguntas da solicitação de inscrição que o certificado imprime, como eram quando ele foi emitido.';
+$string['privacy:metadata:issues:userid'] = 'O usuário para quem o certificado foi emitido.';
 $string['shortname'] = 'Nome breve da pergunta';
 $string['shortname_help'] = 'O nome breve da pergunta da solicitação cuja resposta é impressa, como definido nas configurações da própria pergunta no método de inscrição.
 
@@ -34,6 +36,8 @@ $string['shortname_help'] = 'O nome breve da pergunta da solicitação cuja resp
 * A resposta é fixada quando o certificado é emitido.
 
 **Exemplo**: "unidade" imprime "3º Batalhão" para o participante que deu essa resposta à pergunta cujo nome breve é "unidade".
+
+A resposta impressa é lida por todos que podem ver o certificado ou verificá-lo pelo código, e não só por quem decide as solicitações; por isso, indique apenas perguntas feitas para um certificado.
 
 Nada é impresso para quem foi inscrito de outra forma ou deixou a pergunta sem resposta.';
 $string['shortnameinvalid'] = 'Um nome breve tem só letras minúsculas, números e sublinhados, com até 100 caracteres.';
