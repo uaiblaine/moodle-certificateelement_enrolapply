@@ -79,16 +79,16 @@ The plugin has no table, no setting, no capability and no user preference.
 It adds one value to a row the certificate tool owns: the key `certificateelement_enrolapply` in
 the JSON of `tool_certificate_issues.data`, holding the answers the template prints, by question
 short name. Only the answers the template prints are copied; an empty text means the learner had no
-answer when the certificate was issued. The value is kept as long as the certificate issue and is
-removed with it: a deletion request for the learner deletes the issue through the privacy provider
-of `tool_certificate`. Three things an administrator should know before printing an answer:
+answer when the certificate was issued. The value is kept as long as the certificate issue. The
+plugin's own privacy provider exports it in a data request, under the certificate's code, and
+removes the key, and nothing else of the issue's data, in a deletion request; the provider of
+`tool_certificate` deletes the issue itself. Two things an administrator should know before
+printing an answer:
 
-- **A data request does not export the copy.** The certificate tool's provider exports the issue's
-  code, dates and custom fields, not the `data` column. The answer reaches the learner as printed on
-  the certificate file, and in the export of `enrol_apply` while the application record exists.
 - **The copy outlives the application.** The retention period of `enrol_apply` and the deletion of
   a user account remove the application's answers and leave the certificate issue, with the copy,
-  as they leave the certificate itself. A privacy deletion request for the learner removes both.
+  as they leave the certificate itself. A privacy deletion request for the learner removes
+  the copy, and so does revoking the certificate, which deletes the issue.
 - **A certificate is read more widely than an application.** `enrol_apply` shows an answer only to
   whoever decides or reviews applications, under its own masking. On a certificate the answer is
   read by the learner, by whoever manages or issues certificates of the template, and by anybody who

@@ -97,12 +97,14 @@ plugin of the fleet does (`~/dev/CLAUDE.md`, "XMLDB, upgrades, privacy, versioni
   final (empty means "no answer when issued"); an absent one (an older issue, an element added
   later) is read live from the applications, which the retention sweep of `enrol_apply` may have
   deleted by then.
-- **Nothing exports the copy, and two cleanups do not reach it** (README, "Data stored"):
-  `tool_certificate`'s provider exports custom fields, never `issues.data`; `enrol_apply`'s
-  retention and a user account deletion leave the issue (a privacy deletion request removes it
-  through `tool_certificate`'s provider). A provider of this plugin's own that
-  exported and cleared the key would close it; the cleaner place is the certificate fork's provider.
-  Open, the owner's call.
+- **The plugin's provider exports and removes the copy; two cleanups still do not reach it**
+  (README, "Data stored"): `tool_certificate`'s provider exports custom fields, never `issues.data`,
+  so this plugin's provider reads the issues that carry the key (a LIKE filter, then a JSON decode)
+  and exports or strips only that key. `enrol_apply`'s retention and a user account deletion leave
+  the issue with the copy. The finder is the LIKE alone, so it can name a user whose data only
+  holds the plugin's name as a value: nothing is exported or rewritten for them. The strip is a
+  read-modify-write like the capture: a regeneration in flight can write the key back, which a
+  deletion request survives because `tool_certificate`'s provider deletes the whole issue.
 - **The first PDF is not always built from the frozen copy.** `issue_certificate()` releases the
   issuer's lock before the event, so a concurrent view of the activity can build the file first,
   and an issuer may build the file before it triggers the event: `render()` then reads live,

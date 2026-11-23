@@ -24,7 +24,9 @@
 
 $string['knownshortnames'] = 'Short names in use on this site: {$a}';
 $string['pluginname'] = 'Enrolment application answer';
-$string['privacy:metadata'] = 'The enrolment application answer element stores no data of its own. The answers it prints are kept with the certificate issue, in a table of the certificate tool, and are deleted with it.';
+$string['privacy:metadata:issues'] = 'The certificate tool\'s table of issued certificates, in whose data the enrolment application answer element stores a copy of the answers the certificate prints.';
+$string['privacy:metadata:issues:data'] = 'The answers to the enrolment application questions that the certificate prints, as they were when it was issued.';
+$string['privacy:metadata:issues:userid'] = 'The user the certificate was issued to.';
 $string['shortname'] = 'Question short name';
 $string['shortname_help'] = 'The short name of the application question whose answer is printed, as set in the question\'s own settings on the enrolment method.
 
@@ -34,6 +36,8 @@ $string['shortname_help'] = 'The short name of the application question whose an
 * The answer is fixed when the certificate is issued.
 
 **Example**: "unit" prints "3rd Battalion" for a learner who gave that answer to the question whose short name is "unit".
+
+The printed answer is read by everybody who can see the certificate or verify it with its code, not only by whoever decides applications, so name only questions meant for a certificate.
 
 Nothing is printed for a learner who was enrolled another way or left the question unanswered.';
 $string['shortnameinvalid'] = 'A short name has lower case letters, numbers and underscores only, 100 characters at most.';
